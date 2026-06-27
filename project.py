@@ -9,7 +9,8 @@ def save(name_entry:tk.Entry, type_un_entry:tk.Entry, qtt_entry:tk.Entry, price_
     type_u = type_un_entry.get()
     qtt = qtt_entry.get()
     price = price_entry.get()
-    save_list.append((code, product, type_u, qtt, price))
+    save_list.append((code, product, type_u, qtt, price)
+    )
 
 
 def open_registry():
