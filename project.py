@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 import os
+from pathlib import Path
+import subprocess
 
 # save list
 save_list = []
@@ -32,7 +34,9 @@ def write_in_txt(existing_txt):
 
 
 def open_registry():
-    ...
+    root = Path(__file__).resolve().parent
+    file_path = root/'products.txt'
+    subprocess.Popen(['notepad.exe', str(file_path)])
 
 def main():
     #list of types of units
@@ -77,7 +81,10 @@ def main():
     save_buttom.grid(row=6, column=0, padx=10, pady=10, columnspan=2, sticky="nswe")
 
     quit_buttom = tk.Button(text="Quit", command=root.destroy)
-    quit_buttom.grid(row=6, column=2, padx=10, pady=10, columnspan=2, sticky="nswe")
+    quit_buttom.grid(row=6, column=5, padx=10, pady=10, columnspan=2, sticky="nswe")
+
+    open_buttom = tk.Button(text="Open Registry List", command=open_registry)
+    open_buttom.grid(row=6, column=2, padx=10, pady=10, columnspan=2, sticky="nswe")
     
     root.mainloop()
 
