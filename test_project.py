@@ -43,7 +43,7 @@ def test_save():
         assert price == "23.23"
 
 
-def test_write_int_txt_success():
+def test_write_int_txt():
     # mocked list
     mock_save_list = [
         (1, "notebook", "pcs", 10, 1255.50), 
