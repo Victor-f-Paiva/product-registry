@@ -21,7 +21,7 @@ def save(name_entry:tk.Entry, type_un_entry:tk.Entry, qtt_entry:tk.Entry, price_
     price = price_entry.get()
     save_list.append((code, product, type_u, qtt, price)
     )
-    write_in_txt('products.txt')
+    print(write_in_txt('products.txt'))
 
 
 def write_in_txt(existing_txt):
