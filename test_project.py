@@ -1,7 +1,6 @@
 import pytest
 from unittest.mock import MagicMock, mock_open, patch, call
 from project import save, save_list, open_registry, write_in_txt
-import subprocess
 from pathlib import Path
 import test_project
 
