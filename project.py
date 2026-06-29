@@ -8,7 +8,7 @@ import subprocess
 save_list = []
 def save(name_entry:tk.Entry, type_un_entry:tk.Entry, qtt_entry:tk.Entry, price_entry:tk.Entry):
     # verifying how many itens the .txt has
-    lines = 1
+    lines = 1 + len(save_list) # 1+lenght of save list will return the actual code for next product to be registered
     with open('products.txt', 'r') as file:
         for line in file:
             if line.strip():
@@ -22,6 +22,7 @@ def save(name_entry:tk.Entry, type_un_entry:tk.Entry, qtt_entry:tk.Entry, price_
     save_list.append((code, product, type_u, qtt, price)
     )
     write_in_txt('products.txt')
+
 
 def write_in_txt(existing_txt):
     if (os.path.exists(existing_txt)):
