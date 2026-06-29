@@ -1,6 +1,9 @@
 import pytest
 from unittest.mock import MagicMock, mock_open, patch, call
 from project import save, save_list, open_registry, write_in_txt
+import subprocess
+from pathlib import Path
+import test_project
 
 
 def test_save():
@@ -57,3 +60,18 @@ def test_write_int_txt_error():
     with patch("builtins.open", side_efect= FileNotFoundError):
         result = write_in_txt('not_existing_file.txt')
         assert result == "File not found"
+
+
+def test_open_registry(monkeypatch):
+     # mocking the path 
+    mock_file_path = Path(r'C:\mock\dir\project.py')
+    expected_file_path = Path(r'C:\mock\dir\products.txt')
+    monkeypatch.setattr(test_project, '__file__', str(mock_file_path))
+
+    # mocking the .popen with pourpose to not open a real file in notepad
+    with patch.object(Path, 'resolve', return_value= mock_file_path):
+        with patch('subprocess.Popen') as mock_popen:
+            test_project.open_registry()
+            mock_popen.assert_called_once_with(['notepad.exe', str(expected_file_path)])
+
+
