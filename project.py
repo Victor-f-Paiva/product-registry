@@ -39,6 +39,7 @@ def open_registry():
     file_path = root/'products.txt'
     subprocess.Popen(['notepad.exe', str(file_path)])
 
+
 def main():
     #list of types of units
     list_types_of_units = ["pcs", "pack", "box", "kg"]
